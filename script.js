@@ -1,57 +1,64 @@
 document.addEventListener('DOMContentLoaded', () => {
-<<<<<<< HEAD
-=======
-    // Effet de parallaxe sur la section hero
-    const hero = document.querySelector('.hero');
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        hero.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
-    });
-
->>>>>>> 695122dee9e370211cba1d8f26916efda22d1350
-    // Animation des cartes de projet au scroll
+    // Animation des cartes de projet au scroll (peut rester si les projets sont sur une autre page)
     const projectCards = document.querySelectorAll('.project-card');
-    const observerOptions = {
-        threshold: 0.1
-    };
+    if (projectCards.length > 0) {
+        const observerOptions = {
+            threshold: 0.1
+        };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        projectCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.5s ease-out';
+            observer.observe(card);
         });
-    }, observerOptions);
+    }
 
-    projectCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'all 0.5s ease-out';
-        observer.observe(card);
-    });
-
-    // Effet miroir sur les cartes de compétences
+    // Effet miroir sur les cartes de compétences (si souhaité)
     const skillCards = document.querySelectorAll('.skill-card');
-    skillCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'scaleX(-1)';
+    if (skillCards.length > 0) {
+        skillCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Décommenter pour activer l'effet miroir
+                // card.style.transform = 'translateY(-10px) scaleX(-1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                 // Décommenter pour activer l'effet miroir
+                // card.style.transform = 'translateY(0) scaleX(1)';
+            });
         });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'scaleX(1)';
-        });
-    });
+    }
 
-    // Smooth scroll pour les liens de navigation
+    // Smooth scroll pour les liens de navigation internes (mis à jour)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                // Calculer la position de la cible en tenant compte du header fixe
+                const headerOffset = 80; // Hauteur du header
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
+
+                // Mettre à jour la classe 'active' dans la nav
+                document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
             }
         });
     });
@@ -62,29 +69,32 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
             submitButton.textContent = 'Envoi en cours...';
             submitButton.disabled = true;
 
-            // Simulation d'envoi
+            // Simulation d'envoi (remplacer par une vraie logique si nécessaire)
             setTimeout(() => {
                 submitButton.textContent = 'Message envoyé !';
-                contactForm.reset();
+                contactForm.reset(); // Vider le formulaire
                 setTimeout(() => {
-                    submitButton.textContent = 'Envoyer';
+                    submitButton.textContent = originalButtonText;
                     submitButton.disabled = false;
-                }, 2000);
+                }, 2500);
             }, 1500);
         });
     }
 
-    // Effet de survol sur les liens sociaux
-    const socialLinks = document.querySelectorAll('.social-links a');
-    socialLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            link.style.transform = 'scale(1.2) rotate(5deg)';
+    // Effet de survol sur les liens sociaux du footer
+    const socialLinks = document.querySelectorAll('.footer .social-links a');
+    if (socialLinks.length > 0) {
+        socialLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.style.transform = 'scale(1.2) rotate(5deg)';
+            });
+            link.addEventListener('mouseleave', () => {
+                link.style.transform = 'scale(1) rotate(0)';
+            });
         });
-        link.addEventListener('mouseleave', () => {
-            link.style.transform = 'scale(1) rotate(0)';
-        });
-    });
+    }
 }); 
