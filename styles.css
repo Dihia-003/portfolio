@@ -771,69 +771,158 @@ img {
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem; /* Un peu plus d'espace */
+    gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 2rem;
 }
 
 .project-card {
-    background-color: var(--card-background);
-    border-radius: 10px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(230, 230, 250, 0.95) 100%);
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: var(--transition);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(230, 230, 250, 0.3);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(230, 230, 250, 0.1) 100%);
+    z-index: 0;
+    transition: all 0.4s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(106, 95, 122, 0.1);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(106, 95, 122, 0.2);
+    border-color: rgba(230, 230, 250, 0.8);
+}
+
+.project-card:hover::before {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(230, 230, 250, 0.2) 100%);
 }
 
 .project-image {
     width: 100%;
-    height: 200px; /* Hauteur fixe rétablie */
+    height: 250px;
     overflow: hidden;
-    border-radius: 10px 10px 0 0;
-    margin: 0;
-    border: none;
-    background-color: var(--warm-beige); /* Fond pendant chargement */
+    position: relative;
+}
+
+.project-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0) 0%,
+        rgba(230, 230, 250, 0.2) 100%);
+    transition: all 0.4s ease;
+}
+
+.project-card:hover .project-image::after {
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0) 0%,
+        rgba(230, 230, 250, 0.4) 100%);
 }
 
 .project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    transition: all 0.6s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
 }
 
 .project-card-content {
-    padding: 1.5rem;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(230, 230, 250, 0.9) 100%);
 }
 
 .project-card h3 {
-    text-align: center;
-    margin: 0 0 0.5rem 0;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    color: var(--accent-dark);
+    margin-bottom: 1rem;
+    transition: all 0.4s ease;
+}
+
+.project-card:hover h3 {
+    color: var(--peach);
+    transform: translateY(-5px);
 }
 
 .project-card p {
-    text-align: center;
-    padding: 0;
-    margin-bottom: 1.5rem;
     color: var(--text-light);
-    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
     flex-grow: 1;
 }
 
 .project-links {
-    text-align: center;
-    padding-bottom: 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
     margin-top: auto;
+}
+
+.project-links .btn-small {
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(45deg, var(--peach), var(--lavender));
+    color: var(--accent-dark);
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.project-links .btn-small:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    background: linear-gradient(45deg, var(--lavender), var(--peach));
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .project-image {
+        height: 200px;
+    }
+
+    .project-card-content {
+        padding: 1.5rem;
+    }
 }
 
 /* Section Bonus */
