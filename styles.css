@@ -370,16 +370,28 @@ img {
     transform: translateY(-5px);
 }
 
+/* Section Contact */
+.contact {
+    background: linear-gradient(45deg, 
+        rgba(255, 218, 185, 0.1) 0%,
+        rgba(230, 230, 250, 0.1) 100%);
+    padding: 4rem 1rem;
+    width: 100%;
+    overflow-x: hidden;
+}
+
 .contact-container {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
-    gap: 3rem;
+    gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
     padding: 2rem;
     background-color: var(--background-light);
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(106, 95, 122, 0.1);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .contact-info {
@@ -391,12 +403,13 @@ img {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .contact-info h3 {
     margin-bottom: 2rem;
     font-size: 1.6rem;
-    text-align: center;
     width: 100%;
 }
 
@@ -404,7 +417,6 @@ img {
     margin-bottom: 1.5rem;
     color: var(--text-light);
     line-height: 1.7;
-    text-align: center;
     width: 100%;
 }
 
@@ -415,6 +427,7 @@ img {
     margin-bottom: 1.5rem;
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .info-item i {
@@ -429,6 +442,7 @@ img {
     color: var(--text-light);
     text-align: left;
     flex: 1;
+    word-break: break-word;
 }
 
 .social-links-contact {
@@ -437,6 +451,7 @@ img {
     gap: 1.5rem;
     margin-top: 2rem;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .social-links-contact a {
@@ -452,10 +467,12 @@ img {
 }
 
 .contact-form {
-    padding: 2.5rem;
+    padding: 2rem;
     background-color: var(--card-background);
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .contact-form input,
@@ -469,6 +486,7 @@ img {
     font-family: 'Poppins', sans-serif;
     font-size: 0.95rem;
     color: var(--text-color);
+    box-sizing: border-box;
 }
 
 .contact-form textarea {
@@ -503,6 +521,115 @@ img {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     background: linear-gradient(45deg, var(--lavender), var(--peach));
+}
+
+@media (max-width: 992px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    .contact-info {
+        margin-bottom: 0;
+    }
+    
+    .info-item {
+        justify-content: center;
+    }
+    
+    .social-links-contact {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact {
+        padding: 3rem 0.5rem;
+    }
+
+    .contact-container {
+        padding: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .contact-info h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .info-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .info-item i {
+        margin-bottom: 0.5rem;
+    }
+
+    .info-item p {
+        text-align: center;
+    }
+
+    .social-links-contact {
+        gap: 1rem;
+    }
+
+    .social-links-contact a {
+        font-size: 1.6rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .contact-form button {
+        width: 100%;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: 2rem 0.5rem;
+    }
+
+    .contact-container {
+        padding: 0.5rem;
+        margin: 0 0.5rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 1rem;
+    }
+
+    .contact-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .social-links-contact a {
+        font-size: 1.4rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+    }
+
+    .contact-form button {
+        padding: 0.7rem;
+    }
 }
 
 .footer {
@@ -550,24 +677,6 @@ img {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@media (max-width: 992px) {
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-info {
-        margin-bottom: 2rem;
-    }
-    
-    .info-item {
-        justify-content: center;
-    }
-    
-    .social-links-contact {
-        justify-content: center;
     }
 }
 
@@ -948,166 +1057,6 @@ img {
     max-width: 600px;
     margin: 0 auto;
     color: var(--text-light);
-}
-
-/* Section Contact */
-.contact {
-    background: linear-gradient(45deg, 
-        rgba(255, 218, 185, 0.1) 0%,
-        rgba(230, 230, 250, 0.1) 100%);
-}
-
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 3rem;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: var(--background-light);
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(106, 95, 122, 0.1);
-}
-
-.contact-info {
-    padding: 2rem;
-    background-color: var(--card-background);
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.contact-info h3 {
-    margin-bottom: 2rem;
-    font-size: 1.6rem;
-}
-
-.contact-info p {
-    margin-bottom: 1.5rem;
-    color: var(--text-light);
-    line-height: 1.7;
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.info-item i {
-    color: var(--accent-dark);
-    font-size: 1.4rem;
-    width: 25px;
-    text-align: center;
-}
-
-.info-item p a {
-     color: var(--text-light);
-     word-break: break-word;
-}
-
-.info-item p a:hover {
-    color: var(--peach);
-}
-
-.social-links-contact {
-    margin-top: 2.5rem;
-}
-
-.social-links-contact a {
-    color: var(--accent-dark);
-    font-size: 1.8rem;
-    margin-right: 1.5rem;
-    transition: var(--transition);
-}
-
-.social-links-contact a:hover {
-    color: var(--peach);
-    transform: scale(1.15);
-}
-
-.contact-form {
-    padding: 2.5rem;
-    background-color: var(--card-background);
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid var(--lavender);
-    border-radius: 8px;
-    background-color: #fdfdfd;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text-color);
-}
-
-.contact-form textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--accent-dark);
-    box-shadow: 0 0 0 3px rgba(230, 230, 250, 0.5);
-    outline: none;
-}
-
-.contact-form button {
-    width: fit-content;
-    margin: 1rem auto;
-    display: block;
-    padding: 1rem 2rem;
-    background: linear-gradient(45deg, var(--peach), var(--lavender));
-    color: var(--accent-dark);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: var(--transition);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.contact-form button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, var(--lavender), var(--peach));
-}
-
-/* Style des boutons */
-.btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background: linear-gradient(45deg, var(--peach), var(--lavender));
-    color: var(--accent-dark);
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border: none;
-    cursor: pointer;
-    font-size: 1.1rem;
-    text-align: center;
-    margin: 0 auto;
-    display: block;
-    width: fit-content;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, var(--lavender), var(--peach));
 }
 
 /* Section Parcours */
