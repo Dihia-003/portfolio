@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+<<<<<<< HEAD
+=======
+    // Effet de parallaxe sur la section hero
+    const hero = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        hero.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
+    });
+
+>>>>>>> 695122dee9e370211cba1d8f26916efda22d1350
     // Animation des cartes de projet au scroll
     const projectCards = document.querySelectorAll('.project-card');
     const observerOptions = {
