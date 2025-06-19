@@ -103,6 +103,14 @@
                         <i class="fab fa-figma"></i>
                         <h3>Figma</h3>
                     </div>
+                    <div class="skill-card">
+                        <i class="fab fa-php"></i>
+                        <h3>PHP</h3>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-symfony"></i>
+                        <h3>Symfony</h3>
+                    </div>
                 </div>
             </section>
 
@@ -117,9 +125,7 @@
                         <div class="project-card-content">
                             <h3>IntelliCook</h3>
                             <p>Application web de recettes de cuisine interactive développée avec React.</p>
-                            <div class="project-links">
-                                <a href="https://intellicook.netlify.app/" class="btn btn-small">Voir le projet</a>
-                            </div>
+                           
                         </div>
                     </div>
                     <div class="project-card">
@@ -129,9 +135,7 @@
                         <div class="project-card-content">
                             <h3>CO2WEB</h3>
                             <p>Site web pour une extension navigateur évaluant l'empreinte carbone des sites.</p>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-small">Voir le projet</a>
-                            </div>
+                          
                         </div>
                     </div>
                      <div class="project-card">
@@ -141,9 +145,7 @@
                         <div class="project-card-content">
                             <h3>Hôtel Ducsman</h3>
                             <p>Intégration d'une maquette pour un site vitrine d'hôtel de luxe.</p>
-                            <div class="project-links">
-                                <a href="https://hotel-ducsman.vercel.app/" class="btn btn-small">Voir le projet</a>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -175,7 +177,8 @@
                             <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
-                    <form class="contact-form">
+                    <form class="contact-form" name="contact" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact" />
                         <input type="text" name="name" placeholder="Votre Nom" required>
                         <input type="email" name="email" placeholder="Votre Email" required>
                         <textarea name="message" placeholder="Votre Message" rows="5" required></textarea>
